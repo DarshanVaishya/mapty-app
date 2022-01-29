@@ -10,6 +10,16 @@ Link preview: [Link](https://mapty.darshanvaishya.xyz/)
 - CSS
 - JavaScript
 
+## Technologies used
+
+## Challenges faced
+
+## Learning outcomes
+
+## Screenshots
+
+## Directory structure
+
 ## Collaboration
 
 If you have found a bug, suggesting an improvement or want to collaborate then please raise an issue or create an pull request.
