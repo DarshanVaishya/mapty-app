@@ -10,6 +10,11 @@ const inputDistance = document.querySelector(".form__input--distance");
 const inputDuration = document.querySelector(".form__input--duration");
 const inputCadence = document.querySelector(".form__input--cadence");
 const inputElevation = document.querySelector(".form__input--elevation");
+const cadenceRow = inputCadence.closest(".form__row");
+const elevationRow = inputElevation.closest(".form__row");
+
+let map;
+let mapEvent;
 
 function createPin(coords, map, className) {
 	// eslint-disable-next-line no-undef
@@ -34,7 +39,7 @@ function loadMap(position) {
 
 	// 13 is zoom level
 	// eslint-disable-next-line no-undef
-	const map = L.map("map").setView([latitude, longitude], 14);
+	map = L.map("map").setView([latitude, longitude], 14);
 
 	// eslint-disable-next-line no-undef
 	L.tileLayer("https://{s}.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png", {
@@ -43,8 +48,9 @@ function loadMap(position) {
 	}).addTo(map);
 
 	map.on("click", (event) => {
-		const { lat, lng } = event.latlng;
-		createPin([lat, lng], map, "running-popup");
+		mapEvent = event;
+		form.classList.remove("hidden");
+		inputDistance.focus();
 	});
 }
 
@@ -53,3 +59,27 @@ if (navigator.geolocation) {
 		alert("Error encountered while fetching your location.")
 	);
 }
+
+inputType.addEventListener("change", () => {
+	cadenceRow.classList.toggle("form__row--hidden");
+	elevationRow.classList.toggle("form__row--hidden");
+});
+
+form.addEventListener("submit", (e) => {
+	e.preventDefault();
+
+	// Display data
+	const { lat, lng } = mapEvent.latlng;
+	const type = inputType.value;
+	createPin([lat, lng], map, `${type}-popup`);
+
+	// Reseting the inputs
+	inputType.value = "running";
+	inputDistance.value = "";
+	inputDuration.value = "";
+	inputCadence.value = "";
+	inputElevation.value = "";
+
+	// Hide the form
+	form.classList.add("hidden");
+});
