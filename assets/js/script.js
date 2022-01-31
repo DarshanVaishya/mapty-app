@@ -29,6 +29,7 @@ class Running extends Workout {
 		super(coords, distance, duration);
 		this.cadence = cadence;
 		this.calcPace();
+		this.type = "running";
 	}
 
 	calcPace() {
@@ -41,6 +42,7 @@ class Cycling extends Workout {
 		super(coords, distance, duration);
 		this.elevation = elevation;
 		this.calcSpeed();
+		this.type = "cycling";
 	}
 
 	calcSpeed() {
@@ -51,6 +53,7 @@ class Cycling extends Workout {
 class App {
 	#map;
 	#mapEvent;
+	workouts = [];
 
 	constructor() {
 		this._getPosition();
@@ -91,19 +94,7 @@ class App {
 		inputDistance.focus();
 	}
 
-	_toggleElevationField() {
-		cadenceRow.classList.toggle("form__row--hidden");
-		elevationRow.classList.toggle("form__row--hidden");
-	}
-
-	_newWorkout(e) {
-		e.preventDefault();
-
-		// Display data
-		const { lat, lng } = this.#mapEvent.latlng;
-		const type = inputType.value;
-		app._createPin([lat, lng], `${type}-popup`);
-
+	_clearForm() {
 		// Reseting the inputs
 		inputDistance.value = "";
 		inputDuration.value = "";
@@ -114,21 +105,62 @@ class App {
 		form.classList.add("hidden");
 	}
 
-	_createPin(coords, className) {
+	_toggleElevationField() {
+		cadenceRow.classList.toggle("form__row--hidden");
+		elevationRow.classList.toggle("form__row--hidden");
+	}
+
+	_newWorkout(e) {
+		e.preventDefault();
+
+		const allPositive = (...nums) => nums.every((num) => num > 0);
+
+		// Collecting data
+		const distance = +inputDistance.value;
+		const duration = +inputDuration.value;
+		const type = inputType.value;
+		const { lat, lng } = this.#mapEvent.latlng;
+		let workout;
+
+		if (!allPositive(distance, duration)) {
+			alert("Invalid input");
+			return;
+		}
+
+		if (type === "running") {
+			const cadence = +inputCadence.value;
+			if (!allPositive(cadence)) return alert("Invalid input");
+			workout = new Running([lat, lng], distance, duration, cadence);
+		}
+
+		if (type === "cycling") {
+			const elevation = +inputElevation.value;
+			if (!allPositive(elevation)) return alert("Invalid input");
+			workout = new Cycling([lat, lng], distance, duration, elevation);
+		}
+		this.workouts.push(workout);
+
+		// Display data
+		app._renderWorkoutMarker(workout);
+		console.log(workout);
+		this._clearForm();
+	}
+
+	_renderWorkoutMarker(workout) {
 		// eslint-disable-next-line no-undef
 		const options = L.popup({
 			maxWidth: 250,
 			minWidth: 100,
 			autoClose: false,
 			closeOnClick: false,
-			className,
+			className: `${workout.type}-popup`,
 		});
 
 		// eslint-disable-next-line no-undef
-		L.marker(coords)
+		L.marker(workout.coords)
 			.addTo(this.#map)
 			.bindPopup(options)
-			.setPopupContent("Workout")
+			.setPopupContent(`Workout<br/>${workout.distance}`)
 			.openPopup();
 	}
 }
