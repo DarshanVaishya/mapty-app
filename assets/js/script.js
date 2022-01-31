@@ -12,7 +12,7 @@ const elevationRow = inputElevation.closest(".form__row");
 
 class Workout {
 	date = new Date();
-	id = Date.now();
+	id = String(Date.now());
 
 	constructor(coords, distance, duration) {
 		this.coords = coords;
@@ -23,7 +23,6 @@ class Workout {
 	_setDescription() {
 		// prettier-ignore
 		const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
-		console.log(this);
 		this.description = `${this.type[0].toUpperCase()}${this.type.slice(1)} on ${
 			months[this.date.getMonth()]
 		} ${this.date.getDate()}`;
@@ -61,14 +60,15 @@ class Cycling extends Workout {
 class App {
 	#map;
 	#mapEvent;
-	workouts = [];
+	#mapZoomLevel = 14;
+	#workouts = [];
 
 	constructor() {
 		this._getPosition();
 
 		inputType.addEventListener("change", this._toggleElevationField);
-
 		form.addEventListener("submit", this._newWorkout.bind(this));
+		containerWorkouts.addEventListener("click", this._moveToPopup.bind(this));
 	}
 
 	_getPosition() {
@@ -85,7 +85,7 @@ class App {
 
 		// 13 is zoom level
 		// eslint-disable-next-line no-undef
-		this.#map = L.map("map").setView([latitude, longitude], 14);
+		this.#map = L.map("map").setView([latitude, longitude], this.#mapZoomLevel);
 
 		// eslint-disable-next-line no-undef
 		L.tileLayer("https://{s}.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png", {
@@ -146,7 +146,7 @@ class App {
 			if (!allPositive(elevation)) return alert("Invalid input");
 			workout = new Cycling([lat, lng], distance, duration, elevation);
 		}
-		this.workouts.push(workout);
+		this.#workouts.push(workout);
 
 		// Display data
 		this._renderWorkoutMarker(workout);
@@ -182,7 +182,7 @@ class App {
           <div class="workout__details">
             <span class="workout__icon">${
 							workout.type === "running" ? "🏃‍♂️" : "🚴"
-						}
+						}</span>
             <span class="workout__value">${workout.distance}</span>
             <span class="workout__unit">km</span>
           </div>
@@ -224,6 +224,22 @@ class App {
 		}
 
 		form.insertAdjacentHTML("afterend", HTML);
+	}
+
+	_moveToPopup(e) {
+		const workoutEl = e.target.closest(".workout");
+		if (!workoutEl) return;
+
+		const workout = this.#workouts.find(
+			(work) => work.id === workoutEl.dataset.id
+		);
+
+		this.#map.setView(workout.coords, this.#mapZoomLevel, {
+			animate: true,
+			pan: {
+				duration: 1,
+			},
+		});
 	}
 }
 
