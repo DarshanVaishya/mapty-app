@@ -4,6 +4,7 @@
 
 - [Overview](#overview)
   - [Technologies used](#technologies-used)
+- [Flowchart](#flowchart)
 - [Challenges faced](#challenges-faced)
 - [Learning outcomes](#learning-outcomes)
 - [Screenshots](#screenshots)
@@ -27,6 +28,10 @@ Live preview: [Link](https://mapty.darshanvaishya.xyz/)
 - [Leaflet library](https://leafletjs.com/)
 - Geolocation API
 - Local storage API
+
+## Flowchart
+
+![flowchart](./static/img/flowchart.png)
 
 ## Challenges faced
 
@@ -64,21 +69,21 @@ id = String(Date.now());
 
 ## Learning outcomes
 
-This project helped me solidify my OOPs concept as everything is a class in this project. It was a great practice of inheritance, private members, public interface communication and so on. Also for the first time I used a third party library, and it was a blast to learn.
+This project helped me solidify my OOPs concept as everything is a class in this project. It was a great practice of inheritance, private members, public interface communication and so on. Also for the first time I used a third party library, and it was a blast to learn. Working with async JavaScript also brought some issues, but my understanding of it increased greatly after this project.
 
 In CSS, I learnt a great way to animate removal of an element. All I have to do is to set `height: 0` and once the transition for it ends, call the `element.remove()` method.
 
 ## Screenshots
 
-## Main screen
+### Main screen
 
 ![main screen](./static/img/screenshots/main.png)
 
-## Add running
+### Add running
 
 ![running](./static/img/screenshots/running.png)
 
-## Add cycling
+### Add cycling
 
 ![cycling](./static/img/screenshots/cycling.png)
 
