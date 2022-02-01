@@ -28,6 +28,7 @@ Live preview: [Link](https://mapty.darshanvaishya.xyz/)
 - [Leaflet library](https://leafletjs.com/)
 - Geolocation API
 - Local storage API
+- Open Graph meta tags
 
 ## Flowchart
 
@@ -75,6 +76,10 @@ In CSS, I learnt a great way to animate removal of an element. All I have to do 
 
 ## Screenshots
 
+### Open Graph card
+
+![og card](./assets/img/screenshots/og-tag.png)]
+
 ### Main screen
 
 ![main screen](./assets/img/screenshots/main.png)
@@ -91,27 +96,25 @@ In CSS, I learnt a great way to animate removal of an element. All I have to do 
 
 ```
 .
+├── assets
+│   ├── css
+│   │   └── style.css
+│   ├── img
+│   │   ├── flowchart.png
+│   │   ├── icon.png
+│   │   ├── logo.png
+│   │   ├── og-image.png
+│   │   └── screenshots
+│   │       ├── cycling.png
+│   │       ├── main.png
+│   │       ├── og-tag.png
+│   │       └── running.png
+│   └── js
+│       └── script.js
 ├── index.html
-├── README.md
-└── assets
-    ├── css
-    │   └── style.css
-    ├── img
-    │   ├── icon.png
-    │   ├── logo.png
-    │   ├── Mapty-architecture-final.png
-    │   ├── Mapty-architecture-part-1.png
-    │   ├── Mapty-flowchart.png
-    │   ├── og-image.png
-    │   └── screenshots
-    │       ├── cycling.png
-    │       ├── main.png
-    │       ├── og-tag.png
-    │       └── running.png
-    └── js
-        └── script.js
+└── README.md
 
-5 directories, 14 files
+5 directories, 12 files
 ```
 
 ## Collaboration
