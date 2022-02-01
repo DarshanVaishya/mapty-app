@@ -31,7 +31,7 @@ Live preview: [Link](https://mapty.darshanvaishya.xyz/)
 
 ## Flowchart
 
-![flowchart](./static/img/flowchart.png)
+![flowchart](./assets/img/flowchart.png)
 
 ## Challenges faced
 
@@ -77,15 +77,15 @@ In CSS, I learnt a great way to animate removal of an element. All I have to do 
 
 ### Main screen
 
-![main screen](./static/img/screenshots/main.png)
+![main screen](./assets/img/screenshots/main.png)
 
 ### Add running
 
-![running](./static/img/screenshots/running.png)
+![running](./assets/img/screenshots/running.png)
 
 ### Add cycling
 
-![cycling](./static/img/screenshots/cycling.png)
+![cycling](./assets/img/screenshots/cycling.png)
 
 ## Directory structure
 
