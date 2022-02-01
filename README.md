@@ -70,10 +70,43 @@ In CSS, I learnt a great way to animate removal of an element. All I have to do 
 
 ## Screenshots
 
+## Main screen
+
+![main screen](./static/img/screenshots/main.png)
+
+## Add running
+
+![running](./static/img/screenshots/running.png)
+
+## Add cycling
+
+![cycling](./static/img/screenshots/cycling.png)
+
 ## Directory structure
 
 ```
+.
+├── index.html
+├── README.md
+└── assets
+    ├── css
+    │   └── style.css
+    ├── img
+    │   ├── icon.png
+    │   ├── logo.png
+    │   ├── Mapty-architecture-final.png
+    │   ├── Mapty-architecture-part-1.png
+    │   ├── Mapty-flowchart.png
+    │   ├── og-image.png
+    │   └── screenshots
+    │       ├── cycling.png
+    │       ├── main.png
+    │       ├── og-tag.png
+    │       └── running.png
+    └── js
+        └── script.js
 
+5 directories, 14 files
 ```
 
 ## Collaboration
