@@ -78,7 +78,7 @@ In CSS, I learnt a great way to animate removal of an element. All I have to do 
 
 ### Open Graph card
 
-![og card](./assets/img/screenshots/og-tag.png)]
+![og card](./assets/img/screenshots/og-tag.png)
 
 ### Main screen
 
