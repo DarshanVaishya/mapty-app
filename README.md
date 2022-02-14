@@ -1,7 +1,8 @@
 # Mapty App
 
-## Table of contents
-
+<details>
+ <summary><strong>Table of Contents</strong> (click to expand)</summary>
+  
 - [Overview](#overview)
   - [Technologies used](#technologies-used)
 - [Flowchart](#flowchart)
@@ -11,6 +12,7 @@
 - [Directory structure](#directory-structure)
 - [Collaboration](#collaboration)
 - [Contact me](#contact-me)
+</details>
 
 ## Overview
 
