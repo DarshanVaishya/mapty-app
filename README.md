@@ -18,7 +18,7 @@
 
 Mapty is a web app which helps users by allowing them to store their workouts on the web. The app automatically detects users location and opens the map. The users can click on a position and store their workout details such as distance, duration, time and so on.
 
-Live preview: [Link](https://mapty.darshanvaishya.xyz/)
+Live preview: [Link](https://mapty.darshanv.dev)
 
 [![Netlify Status](https://api.netlify.com/api/v1/badges/e44f8729-e46d-48cf-9e86-02fd6e77e439/deploy-status)](https://app.netlify.com/sites/heuristic-aryabhata-5c34b0/deploys)
 
